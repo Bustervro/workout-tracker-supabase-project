@@ -66,3 +66,9 @@ Next steps:
 - Connect React to Supabase
 - Implement API requests through Postman
 - Add workout and exercise creation functionality
+
+## Frontend Prototype
+
+Created App.jsx, App.css, and supabaseClient.js for the Workout Tracker frontend prototype.
+
+Prepared the project for future Supabase integration.
