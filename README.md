@@ -53,3 +53,13 @@ This project demonstrates the use of a relational PostgreSQL database hosted on 
 ## Learning Outcomes
 
 This project demonstrates database design, relational table structures, CRUD operations, API testing, and front-end integration with a cloud-hosted PostgreSQL database.
+
+## Week 4 Progress
+
+Created database schema in Supabase and inserted sample workout data.
+
+Created users, workouts, and exercises tables.
+
+Verified relationships between tables and tested data insertion successfully.
+
+
