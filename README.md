@@ -53,3 +53,16 @@ This project demonstrates the use of a relational PostgreSQL database hosted on 
 ## Learning Outcomes
 
 This project demonstrates database design, relational table structures, CRUD operations, API testing, and front-end integration with a cloud-hosted PostgreSQL database.
+
+## Week 5 Progress
+
+Created the initial React frontend prototype for the Workout Tracker App.
+
+Added App.jsx, App.css, and supabaseClient.js to prepare for frontend development and Supabase integration.
+
+The prototype displays workout information and establishes the foundation for future CRUD functionality.
+
+Next steps:
+- Connect React to Supabase
+- Implement API requests through Postman
+- Add workout and exercise creation functionality
