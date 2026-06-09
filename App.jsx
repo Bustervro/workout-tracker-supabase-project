@@ -1,21 +1,37 @@
+import { useEffect, useState } from 'react'
+import { supabase } from './supabaseClient'
+
 function App() {
+  const [workouts, setWorkouts] = useState([])
+
+  useEffect(() => {
+    fetchWorkouts()
+  }, [])
+
+  async function fetchWorkouts() {
+    const { data, error } = await supabase
+      .from('workouts')
+      .select('*')
+
+    if (error) {
+      console.log(error)
+    } else {
+      setWorkouts(data)
+    }
+  }
+
   return (
     <div>
       <h1>Workout Tracker</h1>
 
-      <h2>Chest Day</h2>
-      <ul>
-        <li>Bench Press - 3 Sets x 10 Reps @ 135 lbs</li>
-        <li>Incline Dumbbell Press - 3 Sets x 8 Reps @ 75 lbs</li>
-      </ul>
-
-      <h2>Leg Day</h2>
-      <ul>
-        <li>Squat - 4 Sets x 8 Reps @ 225 lbs</li>
-        <li>Leg Press - 3 Sets x 12 Reps @ 300 lbs</li>
-      </ul>
+      {workouts.map((workout) => (
+        <div key={workout.id}>
+          <h2>{workout.workout_name}</h2>
+          <p>Date: {workout.workout_date}</p>
+        </div>
+      ))}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
