@@ -66,3 +66,11 @@ Next steps:
 - Connect React to Supabase
 - Implement API requests through Postman
 - Add workout and exercise creation functionality
+
+## Week 7 Progress
+
+Implemented workout creation functionality.
+
+Users can now add new workouts through the React frontend and save them directly to the Supabase database.
+
+Tested workout creation and automatic data refresh after submitting the form.
