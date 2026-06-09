@@ -66,3 +66,13 @@ Next steps:
 - Connect React to Supabase
 - Implement API requests through Postman
 - Add workout and exercise creation functionality
+
+## Week 6 Progress
+
+Connected React frontend to Supabase database.
+
+Implemented data retrieval from the workouts table.
+
+Successfully displayed workout data in the frontend application.
+
+Prepared the application for future CRUD operations.
