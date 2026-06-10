@@ -1,21 +1,69 @@
+import { useEffect, useState } from 'react'
+import { supabase } from './supabaseClient'
+
 function App() {
+  const [workouts, setWorkouts] = useState([])
+  const [editWorkout, setEditWorkout] = useState('')
+  const [editId, setEditId] = useState(null)
+
+  useEffect(() => {
+    fetchWorkouts()
+  }, [])
+
+  async function fetchWorkouts() {
+    const { data } = await supabase
+      .from('workouts')
+      .select('*')
+
+    setWorkouts(data)
+  }
+
+  async function updateWorkout() {
+    await supabase
+      .from('workouts')
+      .update({ workout_name: editWorkout })
+      .eq('id', editId)
+
+    setEditWorkout('')
+    setEditId(null)
+
+    fetchWorkouts()
+  }
+
   return (
     <div>
       <h1>Workout Tracker</h1>
 
-      <h2>Chest Day</h2>
-      <ul>
-        <li>Bench Press - 3 Sets x 10 Reps @ 135 lbs</li>
-        <li>Incline Dumbbell Press - 3 Sets x 8 Reps @ 75 lbs</li>
-      </ul>
+      {workouts.map((workout) => (
+        <div key={workout.id}>
+          <h2>{workout.workout_name}</h2>
+          <p>{workout.workout_date}</p>
 
-      <h2>Leg Day</h2>
-      <ul>
-        <li>Squat - 4 Sets x 8 Reps @ 225 lbs</li>
-        <li>Leg Press - 3 Sets x 12 Reps @ 300 lbs</li>
-      </ul>
+          <button
+            onClick={() => {
+              setEditId(workout.id)
+              setEditWorkout(workout.workout_name)
+            }}
+          >
+            Edit
+          </button>
+        </div>
+      ))}
+
+      {editId && (
+        <div>
+          <input
+            value={editWorkout}
+            onChange={(e) => setEditWorkout(e.target.value)}
+          />
+
+          <button onClick={updateWorkout}>
+            Save Changes
+          </button>
+        </div>
+      )}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
