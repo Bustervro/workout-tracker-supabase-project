@@ -74,3 +74,19 @@ Implemented workout creation functionality.
 Users can now add new workouts through the React frontend and save them directly to the Supabase database.
 
 Successfully tested workout creation and automatic data refresh.
+
+
+## Week 8 Progress
+
+Implemented workout update functionality for the Workout Tracker application.
+
+Users can now edit existing workout records through the React frontend and save changes directly to the Supabase database.
+
+Added React state management and update queries to support workout editing.
+
+Successfully tested workout updates and verified that changes are stored in the database.
+
+Next Steps:
+- Add workout deletion functionality
+- Implement exercise management features
+- Complete full CRUD operations
