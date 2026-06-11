@@ -69,19 +69,7 @@ Next steps:
 
 ## Week 7 Progress
 
-Implemented workout creation functionality.
 
-Users can now add new workouts through the React frontend and save them directly to the Supabase database.
-
-Successfully tested workout creation and automatic data refresh.
-
-Implemented workout delete functionality for the Workout Tracker application.
-
-Changes:
-- Added delete button in React
-- Connected delete operations to Supabase
-- Removed workout records from database
-- Updated App.jsx and README
 
 ## Week 8 Progress
 
