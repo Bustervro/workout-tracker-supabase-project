@@ -83,6 +83,16 @@ Changes:
 - Removed workout records from database
 - Updated App.jsx and README
 
+## Week 8 Progress
+
+Implemented workout delete functionality for the Workout Tracker application.
+
+Changes:
+- Added delete button in React
+- Connected delete operations to Supabase
+- Removed workout records from database
+- Updated App.jsx and README
+
 Week 8 Progress:
 - Created workout delete feature
 - Connected React frontend to Supabase deletes
