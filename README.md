@@ -75,18 +75,21 @@ Users can now add new workouts through the React frontend and save them directly
 
 Successfully tested workout creation and automatic data refresh.
 
+Implemented workout delete functionality for the Workout Tracker application.
 
-## Week 8 Progress
+Changes:
+- Added delete button in React
+- Connected delete operations to Supabase
+- Removed workout records from database
+- Updated App.jsx and README
 
-Implemented workout update functionality for the Workout Tracker application.
-
-Users can now edit existing workout records through the React frontend and save changes directly to the Supabase database.
-
-Added React state management and update queries to support workout editing.
-
-Successfully tested workout updates and verified that changes are stored in the database.
+Week 8 Progress:
+- Created workout delete feature
+- Connected React frontend to Supabase deletes
+- Tested deleting workout records
+- Improved CRUD functionality
 
 Next Steps:
-- Add workout deletion functionality
-- Implement exercise management features
-- Complete full CRUD operations
+- Create exercise management features
+- Improve application design
+- Complete full CRUD workflow
