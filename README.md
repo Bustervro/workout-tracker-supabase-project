@@ -68,7 +68,11 @@ Next steps:
 - Add workout and exercise creation functionality
 
 ## Week 7 Progress
+Implemented workout creation functionality.
 
+Users can now add new workouts through the React frontend and save them directly to the Supabase database.
+
+Successfully tested workout creation and automatic data refresh.
 
 
 ## Week 8 Progress
