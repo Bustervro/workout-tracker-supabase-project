@@ -77,18 +77,14 @@ Successfully tested workout creation and automatic data refresh.
 
 Implemented workout delete functionality for the Workout Tracker application.
 
-Changes:
-- Added delete button in React
-- Connected delete operations to Supabase
-- Removed workout records from database
-- Updated App.jsx and README
 
-Week 8 Progress:
-- Created workout delete feature
-- Connected React frontend to Supabase deletes
-- Tested deleting workout records
-- Improved CRUD functionality
+## Week 8 Progress
 
+Implemented workout delete functionality.
+
+Users can now remove workout records directly from the React frontend. Deleted records are removed from the Supabase database and the page refreshes to show updated data.
+
+Successfully tested workout deletion and database synchronization.
 Next Steps:
 - Create exercise management features
 - Improve application design
