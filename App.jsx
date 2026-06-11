@@ -11,11 +11,15 @@ function App() {
   }, [])
 
   async function fetchWorkouts() {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('workouts')
       .select('*')
 
-    setWorkouts(data)
+    if (error) {
+      console.log(error)
+    } else {
+      setWorkouts(data)
+    }
   }
 
   async function updateWorkout() {
@@ -26,6 +30,14 @@ function App() {
 
     setEditWorkout('')
     setEditId(null)
+    fetchWorkouts()
+  }
+
+  async function deleteWorkout(id) {
+    await supabase
+      .from('workouts')
+      .delete()
+      .eq('id', id)
 
     fetchWorkouts()
   }
@@ -35,7 +47,7 @@ function App() {
       <h1>Workout Tracker</h1>
 
       {workouts.map((workout) => (
-        <div key={workout.id}>
+        <div className="workout-card" key={workout.id}>
           <h2>{workout.workout_name}</h2>
           <p>{workout.workout_date}</p>
 
@@ -47,6 +59,10 @@ function App() {
           >
             Edit
           </button>
+
+          <button onClick={() => deleteWorkout(workout.id)}>
+            Delete
+          </button>
         </div>
       ))}
 
@@ -55,6 +71,7 @@ function App() {
           <input
             value={editWorkout}
             onChange={(e) => setEditWorkout(e.target.value)}
+            placeholder="Update workout name"
           />
 
           <button onClick={updateWorkout}>
