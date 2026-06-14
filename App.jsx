@@ -1,81 +1,72 @@
-import { useEffect, useState } from 'react'
-import { supabase } from './supabaseClient'
+import { useState } from 'react'
+import './App.css'
 
 function App() {
-  const [workouts, setWorkouts] = useState([])
-  const [editWorkout, setEditWorkout] = useState('')
-  const [editId, setEditId] = useState(null)
+  const [workouts, setWorkouts] = useState([
+    {
+      id: 1,
+      name: 'Chest Day',
+      date: '2026-06-14',
+      exercises: ['Bench Press - 3x10 @ 135 lbs', 'Incline Dumbbell Press - 3x8 @ 75 lbs']
+    },
+    {
+      id: 2,
+      name: 'Leg Day',
+      date: '2026-06-15',
+      exercises: ['Squat - 4x8 @ 225 lbs', 'Leg Press - 3x12 @ 300 lbs']
+    }
+  ])
 
-  useEffect(() => {
-    fetchWorkouts()
-  }, [])
+  const [newWorkout, setNewWorkout] = useState('')
 
-  async function fetchWorkouts() {
-    const { data } = await supabase
-      .from('workouts')
-      .select('*')
+  function addWorkout() {
+    if (newWorkout.trim() === '') return
 
-    setWorkouts(data)
+    const workout = {
+      id: Date.now(),
+      name: newWorkout,
+      date: new Date().toISOString().split('T')[0],
+      exercises: ['New Exercise - 3x10']
+    }
+
+    setWorkouts([...workouts, workout])
+    setNewWorkout('')
   }
 
-  async function updateWorkout() {
-    await supabase
-      .from('workouts')
-      .update({ workout_name: editWorkout })
-      .eq('id', editId)
-
-    setEditWorkout('')
-    setEditId(null)
-
-    fetchWorkouts()
-  }
-
-  async function deleteWorkout(id) {
-    await supabase
-      .from('workouts')
-      .delete()
-      .eq('id', id)
-
-    fetchWorkouts()
+  function deleteWorkout(id) {
+    setWorkouts(workouts.filter((workout) => workout.id !== id))
   }
 
   return (
     <div>
-      <h1>Workout Tracker</h1>
+      <h1>Workout Tracker App</h1>
+
+      <div className="form-box">
+        <input
+          value={newWorkout}
+          onChange={(e) => setNewWorkout(e.target.value)}
+          placeholder="Enter workout name"
+        />
+        <button onClick={addWorkout}>Add Workout</button>
+      </div>
 
       {workouts.map((workout) => (
-        <div key={workout.id} className="workout-card">
-          <h2>{workout.workout_name}</h2>
-          <p>{workout.workout_date}</p>
+        <div className="workout-card" key={workout.id}>
+          <h2>{workout.name}</h2>
+          <p>Date: {workout.date}</p>
 
-          <button
-            onClick={() => {
-              setEditId(workout.id)
-              setEditWorkout(workout.workout_name)
-            }}
-          >
-            Edit
-          </button>
+          <h3>Exercises</h3>
+          <ul>
+            {workout.exercises.map((exercise, index) => (
+              <li key={index}>{exercise}</li>
+            ))}
+          </ul>
 
           <button onClick={() => deleteWorkout(workout.id)}>
-            Delete
+            Delete Workout
           </button>
         </div>
       ))}
-
-      {editId && (
-        <div>
-          <input
-            value={editWorkout}
-            onChange={(e) => setEditWorkout(e.target.value)}
-            placeholder="Update workout name"
-          />
-
-          <button onClick={updateWorkout}>
-            Save Changes
-          </button>
-        </div>
-      )}
     </div>
   )
 }
