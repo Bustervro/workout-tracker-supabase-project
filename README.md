@@ -95,3 +95,17 @@ Next Steps:
 - Create exercise management features
 - Improve application design
 - Complete full CRUD workflow
+
+Implemented exercise management functionality.
+
+Changes:
+- Connected React frontend to exercises table
+- Displayed exercise information from Supabase
+- Added exercise name, sets, reps, and weight display
+- Updated README documentation
+
+Week 9 Progress:
+- Added exercise management features
+- Tested exercise data retrieval from Supabase
+- Improved workout tracking functionality
+- Continued CRUD development
