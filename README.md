@@ -95,3 +95,18 @@ Next Steps:
 - Create exercise management features
 - Improve application design
 - Complete full CRUD workflow
+
+## Week 10 Progress
+
+Completed the Workout Tracker application demo.
+
+Changes:
+- Displayed workout records
+- Displayed exercises for each workout
+- Added workout creation feature
+- Added workout deletion feature
+- Improved frontend styling
+- Tested the app in Replit
+
+Project Status:
+The Workout Tracker app is working as a React frontend demo and shows workout tracking functionality.
